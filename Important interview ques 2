@@ -1,0 +1,128 @@
+OOPs
+Value Types and Reference Types
+Boxing and UnBoxing
+Nullable Types
+Var vs dynamic
+Ref vs out keywords
+String vs StringBuilder
+What is abstract class? example of how to use it?
+Constructors, Destructors, The GC
+Method Overloading
+Method Overriding
+Access modifiers : private, pubic, protected, internal, protected internal, new
+Sealed classes
+Creating Interfaces
+Declaring properties within Interfaces
+Static Classes
+Extension methods
+Exception Handling
+Role of a Garbage Collector
+Finalize vs Dispose
+Collection Dictionnary and Hashtable
+Dependency Injection – Only Concept and Simple Demo
+Diff between Hash and Dictionary?
+Async and Sync method?
+What is finally class in try catch 
+Deeper question into dictionary 
+public static void with example.
+Constructors
+private constructors
+Array vs ArrayList
+Using statement
+Finalize method
+dispose method
+Why we use catch block
+can we execute multiple catch block
+Types of comments
+how many constructor we can define in a class
+managed and unmanaged code
+garbage collector
+design pattern-singleton
+array list
+collection
+
+Jquery
+What are various types of jQuery selector?
+What are the ajax components?
+
+MVC
+Authentication and authorization in MVC
+what is the use of viewstart.cshtml file?
+Use of MVC view
+Scenario - what steps to follow if user reported slowness for specific page or module.
+List different types of ActionResults. 
+Why MVC? 
+how to move data from controller to view in MVC
+bundling and minification
+Routing Attribute conventional
+connection pooling
+Difference between View and Materialized view in SQL.
+Difference between Char and Varchar.
+Logging Technique
+Any Authentication Technique 
+Token Authentication 
+
+Senario
+What do you do if you think you are running behind and not able to make a delivery?
+How you can improve performance (code performance handling technique)?
+Scenario - what steps to follow if user reported slowness for specific page or module.
+Database interaction 
+What was your role in your last project. Do you have experience in leading the team?
+ At what depth did you work in SQL using store procedures.
+Architecture of your project wherein you have used MVC.
+Which subject did you like most and reason?
+What would you like to improve in your last project?
+what was the challenging task achieved in last project what was that problem and solution provided
+how to improve memory leakage problem in application?
+what is SOLID principle?
+
+Coding
+/*
+Problem Description: Given two bearing angles alpha1 and alpha2 (in degrees), write a C# method to calculate the degrees between aplha1 and alpha2.
+Important: a bearing angle can have values between 0 and 360. A full turn is 360 degrees.
+
+A bearing is an angle measured clockwise from the North.
+
+Example 1: If the input is alpha1 = 20 and alpha2 = 45, the function should return 45-20=25 degrees
+Example 2: If the input is alpha1 = 20 and alpha2 = 345, the function should return 345-20=35 degrees
+Example 3: If the input is alpha1 = 20 and alpha2 = 720, the function should return 720-20=20 degrees
+                North
+0
+                  |    *
+                  |   *
+                  |  *
+                  | *
+                  |*
+(West)270 ----------------- 90 (East)
+                  |
+                  |
+                  |
+                  |
+                  |
+180
+                South
+
+*/
+
+check any word is occur twice in string array, if yes return true else false
+
+sum off even numbers in int array
+
+"Code: /*Problem: Write a program to return the number of Quarters (25 cents), Dimes (10 cents), Nickels (5 cents), and Pennies (1 cent) needed to complete a dollar amount given as input. 
+Note: Any programming language is ok, including pseudo-code 
+input: dollar amount output: Number of Quarters, Dimes, Nickels, and Pennies*/ 
+[output]  
+CalculateCoins([input]) {  // Write Code here...} "
+Note: Any programming language is ok, including pseudo-code 
+
+input: dollar amount output: Number of Quarters, Dimes, Nickels, and Pennies*/ 
+[output]  
+CalculateCoins([input]) {  // Write Code here...} 
+
+11)         Program to mix two strings together example :
+Input:
+              Input 1 => “hello”
+              Input 2 c=> “world”
+Output:
+              “Hweolrllod”
+12)         Optimisation techniques to improve the performance of application.
