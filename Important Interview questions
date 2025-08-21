@@ -1,0 +1,1466 @@
+Module 1
+------------
+What is an Abstract Class?
+What is Interface?
+What are access Specifiers?
+What are get and set properties?
+What is Inheritance?
+What is Overloading?
+What is Overriding?
+What Extension Methods?
+What are Features  New of C# 8.0?
+What an Constructor?
+What is Collection Framework?
+What is generics?
+What is Array List?
+What is List<T>?
+What is string and StringBuilder Difference?
+What is difference between public and internal?
+
+Module 3
+----------
+What is MVC?
+What is Design Pattern?
+What is Http Status Codes?
+Request pipeline?
+What is Configure services and configure method?
+What is Web CLI? Why is it used in Dotnet Core?
+What is Donet Core?
+What is EF Dotnet Core EF?
+What is Swagger?
+What is Middleware in Dotnet Core?
+What is DI? What is IOC?
+What is App Life Cycle of Dotnet Core Application?
+What is Hosting Model?
+What is Configure Services and Configure Methods in startup.cs class ?
+What are different Configuration Sources we have in Dotnet core?
+What is Routing?
+What is kestrel server?
+What are Tag Helpers?
+What is State Management?
+What are Built-in middleware?
+What is Content Negotiation?
+What is Cross Platform?
+What is Caching?
+What are Cookies?
+How do We manage Session  in Dotnet Core Application?
+What are Endpoints?
+What is REST endpoints?
+What are Http Headers?
+What are Return type in API Actions? 
+What is CORS?
+What is ORM?
+
+
+What is abstract class?
+What is an Interface?
+What is partial class?
+What is constructor?
+What is overloading show with one good example?
+What is overriding wih good example?
+What is inheritance?
+what is collection framework?
+what is generic classes?
+whhat is array and array list difference?
+what are joins?
+What is DML?
+What is difference truncate and delete?
+write  update insert and delete command?
+what is normalization?
+what are different types of contractors?
+What MVC?
+What is Web API architecture?
+what attribute routing?
+what traditional Routing?
+what is routing?
+what are actions Results?
+
+
+Which technology you are using at front end?
+Which version of angular you are using?
+Which all technologies apart from angular you are using?
+What is node js?
+what is Services in angular?
+What is component is angular?
+what is Pipes in angular?
+what are directives?
+How did u connect your front end to back end?
+What is HttpClinet?
+What is Cors?
+what is types Script?
+what are promises?
+
+Which versions of dotnet core u are using?
+What are tag helpers?
+what is web API?
+what is web api and rest api difference?
+what is DI?
+what us JWT token?
+what are different status codes?
+what is JSON ?
+Authentication and Authorization?
+What are filters in ASp.net MVC?
+
+
+
+When you debug the angular application, it uses node server to serve the requests.
+ Usually, the command is ng serve or ng s which basically compiles the application
+ and launches the node server to serve the application at localhost on port 4200 by default.
+
+When you build the angular application, usually by the command ng build —prod, it generates 
+Html and JavaScripts and CSS files along with all the assets and saved in the build folder in the root of the source by default.
+
+
+
+.NET Core
+	- What is .NET Core?
+		- Open-source, cross platform framework for developing Web Applications
+			- MVC, RESTful services, Single Page Apps, Blazor apps and Razor apps
+			- Support WPF apps and Windows Forms apps
+		- Community driven framework-Support from Microsoft
+		- Cloud based-AZURE support-You can deploy on cloud 
+		- Open-source standards
+			- Lightweight
+			- CLI based
+			- containerzable
+			- cross-platform (don't confuse with platform independent)
+			- community driven
+			- Restorable Packages
+				- Add necessary packages from internet
+				- No need to carry the packages when project is copied to other machines
+				- Restore the packages any time ( dotnet restore)
+				- packages list will be maintained in a file (.csproj)(node apps it is package.json)(python we have requirements.txt)
+	- Why .NET Core?
+	- How to create .NET Core Project?
+		- We can use dotnet core CLI to create, run and test projects
+		- Use visual studio to create , run and test projects
+	- Dotnet CLI
+		- Provides a base command as 'dotnet' 
+		- We can create, restore packages, compile projects, run project and publish using CLI
+			- Create  -> dotnet new <templatetype> [Options]
+						eg: dotnet new mvc -n SampleProject -o MyProjectDir
+						eg: dotnet new webapi
+						eg: dotnet new web
+						eg: dotnet new console
+			- Restore - > dotnet restore
+			- Build - dotnet build [options] 
+			- Run - dotnet run [options]
+			- Publish - dotnet publish [options]
+
+Hosting model
+	- Host is used to run and serve the application.
+	- Host is responsible to start, serve and stop the application.
+	- Self-Hosting and Web Server Hosting (IIS) available.
+	- .NET Core runtime comes with an integrated web server called Kestral.
+		- Kestral is light-weight, open-source and cross-platform web server.
+	- In production use Kestral with other web servers for entiprise web server features
+		- We can use IIS, Tomcat, NGINX as reverse proxy for Kestral.
+	- Host Configuration is required
+		- Listening port config
+		- SSL supported or not
+		- Request body Max Size
+		- Services configured in Application 
+			- Configuration sources such as CmdLine args, Env variables, Appsettings.json are already configured
+	- WebHost/GenericHost [ only Generic Host]
+
+App Life cycle
+	- Program.cs -> Main() method
+		- create and start a web server host
+	- Startup.cs 
+		-> ConfigureServices()
+			- Configure the services required by the application
+			- DI services are registered here
+		-> Configure()
+			- Used to create the Request Pipeline
+			- It defines which of the middleware need to be executed when a request is received.
+			- IApplicationBuilder instance is used to configure the pipeline 
+			- Order of the middleware is important. 
+		
+Request pipeline
+	- Run()
+		- Called using the IApplicationBuilder object.
+		- Run method is used as a short-circuit method, which terminates the request and send response.
+	- Use()
+		- It is used to create the middleware for our request pipeline	
+	- Map()
+		- 
+	- MapWhen()
+	
+Configuration Sources
+	- In .NET Framework web apps it allows us to read config from web.config only.
+	- .NET Core web apps supports multiple configuration sources in one application. 
+		- Cmd Line args 
+		- Environment variables
+			[Company]="ABC"
+		- Json files
+			- appsettings.json  + appsettings.Development.json
+			- Assume we have a key value pair [Company] ="Hexaware"
+		- Xml files
+		- Ini Files
+		- In memory objects (dictionary type)
+		- Key per file
+		- Cloud key vault
+	- One configuration source can override other if same key exists.
+
+Dependency Injection
+	- .NET Framework DI can be implemented using Ninject or Unity 
+	- DI is a pattern that helps us to develop loosly coupled application.
+	- Removes the dependency on classes.
+	- Typically in application user is responsible to create, manage and dispose the dependent service objects
+		eg: In EmployeeController we use a service class SqlDataManager
+			SqlDataManager provides function to insert, delete, update and read employee objects. 
+			
+			interface IDataManager
+			{
+				Employee AddEmployee(Employee emp);
+				Employee GetByEmail(string email);
+				IEnumerable<Employee> GetEmployees();
+				Employee GetEmployee(int id);
+				Employee UpdateEmployee(int id, Employee emp);
+				Employee DeleteEmployee(int id);
+			}
+			
+			class SqlDataManager:IDataManager
+			{
+				Employee AddEmployee(Employee emp);
+				IEnumerable<Employee> GetEmployees();
+				Employee GetEmployee(int id);
+				Employee UpdateEmployee(int id, Employee emp);
+				Employee DeleteEmployee(int id);
+			}
+			
+			class PostgreDataManager:IDataManager
+			{
+				Employee AddEmployee(Employee emp);
+				IEnumerable<Employee> GetEmployees();
+				Employee GetEmployee(int id);
+				Employee UpdateEmployee(int id, Employee emp);
+				Employee DeleteEmployee(int id);
+			}
+			
+			class EmployeeController:Controller
+			{
+				private IDataManager dm;
+				private ValidationService vs;
+				
+				public EmployeeController(IDataManager datamanager, ValidationService v)
+				{
+					this.vs=v;
+					this.dm=datamanager;
+				}
+				
+				public IActionResult Index()
+				{
+					
+					var data = dm.GetEmployees();
+					return View(data);
+				}
+				
+				[HttpPost]
+				public IActionResult Create(Employee e)
+				{
+					
+					var isValid= vs.Validate(e);
+					if(isValid)
+					{
+						dm.AddEmployee(e);
+						return RedirectToAction("Index");
+					}
+					else{
+						return View(e);
+					}
+				}
+			}
+			
+			class ValidationService
+			{
+				private IDataManager dm;
+				
+				public ValidationService(IDataManager d)
+				{
+					dm= d;
+				}
+				public bool Validate(Employee e)
+				{
+					var item=dm.GetByEmail(e.email)
+					if(item!=null)
+						return false;
+					else
+						return true;
+				}
+				
+			}
+	
+			class Startup
+			{
+				public void ConfigureServices(IServicesCollection services)
+				{
+					services.AddTransient<IDataManager, PostgreDataManager>(); //only one instance
+					services.AddScoped<>();
+					services.AddTransient<>();
+				}
+			}
+	- DI is a built-in feature in .NET Core
+	- The default IoC container can be replaced by third-party IoC containers.
+		eg: Autofac
+
+Built-in middleware
+
+    What is a middleware in .NET Core?
+	 Middleware are software components that are assembled into an application pipeline to handle requests and responses. 
+	 Each component chooses whether to pass the request on to the next component in the pipeline,
+	 and can perform certain actions before and after the next component is invoked in the pipeline.
+	
+	- UseStaticFiles()
+		- used to serve static files from the configured location
+		- As per the default configuration in GenericHost 'wwwroot' folder is considered as static files folder. 
+	- UseDirectoryBrowser()
+	- UseDefealtFiles()
+	- UseFileServer() - Combine features of StaticFiles, DirectoryBrowser and Defaultfiles
+	
+Tag Helpers
+        Tag Helpers in ASP.NET Core are the server-side components. They are basically used to perform defined transformations on HTML Elements.
+	 As they are server-side components, so they are going to be processed on the server to create and render HTML elements in the Razor files.
+
+	 Types of Tag Helpers in ASP.NET Core:
+ 
+	  There are two types of Tag helpers in ASP.NET Core. They are as follows:
+            Built-In Tag Helpers: They come in-built in the ASP.NET Core Framework and can perform common tasks like generating links,
+	   	                  creating forms, loading assets, showing validation messages, etc.
+	    Custom Tag Helper: That can be created by us to perform our desired transformation on an HTML element.
+
+	- Is an alternate for HTML Helpers
+		- Html Helpers are used to generate HTML code from C# functions
+		- @Html.TextBoxFor() -> Used to generate a textbox for binding
+		- @Html.ActionLink() -> Creates a hyperlink
+		- @Html.Partial() -> Includes a partial page
+		- @Url.Action() -> Used to generate Url from given args
+		- @Ajax.ActionLink() -> Create ajax enabled hyperlink
+	- Tag helpers looks exactly like html tags
+	- But Tag Helpers are actual C# class implementations
+		<hello name="rash" />  can render to <p class="highlight">Hello rash</p>
+	
+Caching
+	- Is used to improve the performance of application. 
+	- Instead of accessing data from a datasource everytime, we can cache the data once in the cache storage and access it frequently.
+	- Types of caching
+		- Response Caching
+			- The action result can be cached for a period of time.
+			- Use [ResponseCache] annotation will be used on top of the action method
+			- We need to use caching service in ConfigureServices method using services.AddResponseCaching()
+			- We also need to use the caching middleware for enabling caching. we need to configure the app.UseResponseCaching() middleware.
+		- InMemory Caching
+			- We use in-memory cache to store data that is frequently accessed in our application.
+			- We need to enable Inmemory cache service in configureserices method
+			- IMemoryCache is the DI service interface that provide access to the cache storage. 
+			- the cached data is stored in the application servers memory. 
+			- Stick sessions or ARR (automatic Request routing) must be enable when running in distributed environment like server farms.
+		- Distributed Caching
+			- Store the cached data outside the app/server memory
+			- Stored in a commonly accessible location such as SQL Server DB, Redis DB, NCacahe Server
+			- We can use the IDistributedCache interface to access the cache storage
+			- .NET Core is providing an in memory implementation of IDistributedCache for dev and test purposes.
+			
+State management 
+	  State management maintains and stores the information of any user till the end of the user session.
+	- Query String - Not Implementing
+	- Hidden fields - Not Implementing	
+	- Cookies - Not Implementing
+	- Cache - Done
+	- Session 
+		- One of the Distributed caching must be enabled to use session.
+		- services.AddSession() method must be called in ConfigureServices to configure Session service.
+		- Use the app.UseSession() middleware to enable session in the application
+		- Get, GetString for reading data
+		- Set, SetString for storing data
+		- By using Microsoft.AspNetCore.Http namespace we can use GetInt32, GetBoolean etc functions are availalbe.
+	- TempData
+		- Can persist data even in redirection
+		- It can persist data untill it consumes or the request is completed.
+		- Two providers - CookieTempDataProvider and SessionStateTempDataProvider
+		- CookieTempData provider is the default 
+		- Configure services.AddControllersWithViews().AddSessionStateTempDataProvider() to enable Session baed tempdata provider.
+	- HttpContext.Items
+		
+Routing
+	- Use Routing middleware
+	- UseEndpoint
+	- Use of Route annotation for route prefix and route template
+	- Http method annotations
+	- Passing URL Parameters using route templates
+
+
+
+	
+Entity Framework Core
+	- EF is an ORM tool that helps us to perform DB operations
+	- Model class objects are mapped to table entities
+	- Microsoft.Entityframework package is used for EF operations
+	- We can create a DbContext class that allows db operations 
+	- Data annotations can be used in models for validation and schema definition.
+	- EF Core supports DB First and Code first approaches
+		- Code first is recommended appraoch for new applications
+			- Allows us to do Database migration based on model changes
+		- Db first is better when upgrading an existing application
+			- While modernizing apps to run in cloud 
+	
+	
+Web API
+	- What is Web API?
+		- Its a framework or technology to develop RESTful services
+		- RESTful services are similar to SOAP based web services
+		- Now, the front-end frameworks mostly use REST services, becoz it can be invoked directly using the URL. 
+		- REST services are using the features of HTTP protocol
+	- RESTful services
+		- Representational State Transfer
+		- Completely HTTP Based
+			- It used HTTP protocol as communication protocol
+			- Uses HTTP methods and URL to identify the action to invoke 
+			- Supports different content types - XML and JSON (also can support other formats like CSV)
+			- Http Headers can be used for deciding the data format - Accept and Content-Type
+	- Endpoints
+		- It is the combination of HTTP method and Url that points to an action
+		- HTTP methods
+			GET  -> Read data from server (Reqeust data from server)
+			POST -> Create a new entry or file in server
+			PUT  -> Replace and exiting file / entry in server. (Usually used in update )
+			PATCH -> Update the entry in server.
+			DELETE -> Remove an entry/file from server.
+			OPTIONS -> Used to check the support for operations(Check which of the Http operations are supported) 
+		- What is REST endpoints?
+			GET http://localhost:5000/api/Products -> ProductController/GetProducts()
+				Read all products
+			POST http://localhost:5000/api/Products -> ProductController/AddProduct()
+				Add a new product to stock
+			GET http://localhost:5000/api/Products/10 -> ProductController/GetProduct(int id)
+				Read a single product from server with id 10
+			PUT http://localhost:5000/api/Products/10 -> ProductController/UpdateProduct(int id)
+				Updates an exiting record with Id 10
+			DELETE http://localhost:5000/api/Products/10 -> ProductController/DeleteProduct(int id)
+				Deleting a single product with id 10
+			GET http://localhost:5000/api/Products/brand/samsung -> ProductController/Search(string brand)
+				Search products by brand name
+		- What is Http Status Codes?
+			- Status codes indicates the process execution status or response status.
+			- Before processing the response data we need to evaluate the status code.
+			2xx -> Success operations
+				200 - OK
+				201 - Created 
+				204 - No Content 
+			3xx - Redirection (used in web sites)
+				304 - Temporary redirection
+				305 - Cached redirection
+				307 - Permenent redirection
+			4xx - Client side error
+				404 - Not Found
+				401 - Unauthorized
+				403 - Access Denied
+				400 - BadRequest
+			5xx - Server side error
+				500 - Internal Server Error
+				501 - Timed out
+		- Http Headers
+			- The reqeust and response contains headers 
+			- Headers are key-value pair entries
+			- Used to specify the metadata or additional informations about request or respose data.
+				Content-Type 
+					Present in Request and Response
+					Specifies the type of the data you sent or receive. 
+					Content-Type : application/json
+					Content-Type : text/xml
+					Content-Type : text/html 
+				Accept
+					Determines the Response content-type
+					It is present in reqeust header only
+				
+	- Return type in API Actions
+		- Primary types  - String, int, boolean, float 
+		- User defined types - classes and structures
+		- Collections - IEnumerable
+		- ActionResult<T> 
+		- Task<ActionResult<T>> for Async
+Content Negotiation
+	- By default the API server send the response using the default formatter.
+	- In .NET Core it uses application/json or text/json as the default formatters.
+	- Client can request for a specific content format using Accept header.
+	- API server checks the valid formatter available to format the data in requested content type. 
+	- Response - If the foratter is not available it uses the default formatter.
+	- Request - If incoming data format is not supported the api will return 415-Media Type not supported
+			
+CORS
+	- Cross Origin Resource Sharing
+	- It is a security policy implied by the framework to protect APIs from external domains. 
+	- PRovide access to APIs from configured domains with controlled access.
+	- Limit the access to operations by defining allowed methods.
+	- Microsoft.AspNetCore.Cors package is used to configure the CORS policy.
+	- Configure the CORS service and CORS middleware.
+			
+Microservices
+	- What is Pattern?
+		Solution for the problems that continues occurs in out app development
+		Some architectural patterns are - monolithic, SOA and Microservices
+	- What is Monolithic applications and its disadvantages?
+		Tightly coupled applications that inplements all project modules in single project. 
+		- Cannot choose different frameworks and technologies
+		- Module level scaling not possible. NEed to scale the entire project.
+		- Deployment time is higher, becoz we need to deploy the entire application.(app size is larger)
+		- Error in one module leads to the downtime of the application. Becoz entire app crashes.
+		- Using polyglot persistence is complex
+		- Redeployment of single module without affecting entire app downtime is not possible.
+		- Containerization become difficult as the application size increases 
+	- What is the advantage of SOA?
+		- SOA is an architecture that helps developers to develop loosely coupled applications.
+		- Each module of the project is developed as individual services.
+		- modules are created as reusable services that can be integrated into any client applications
+			SOAP Web services
+			RESTful services
+	- What is Microservices?
+		- Microservices are independently project that can be tested independently and deployed independently.
+		- Each module is created as reusable services
+		- Different languages and frameworks can be used
+		- Each service has its own database, they never share database
+		- Scaling of individual services are possible
+		- Can deploy a service without affecting other services
+	- How Microservices are different from SOA?
+		- DB not shared
+		- Services can communicate each other
+		- No ESB required
+		
+Communication patterns in microservices
+	- REST endpoint (Http based communication)
+		- Sender and receiver must be online.
+		- nearly Real time communication	
+		- One-to-one communication
+		- By default synchronous type
+		- Communication ends when a response is received, a response indicates communication ends. 
+	- Message based communication 
+		- Sender and receiver need not to be online at same time.
+		- A message broker service provides a temporary storage queue to persist messages for a period of time. 
+		- Supports one-to-one and one-to-many communication.
+		- Not real time communication
+		- It is asynchronous
+		- No response expected to complete the communication.
+	- Event-Driven architecture
+		- it is real time communication. 
+		- it can be handled by multiple receivers(event handlers)
+		- No response expected 
+		- it can be asynchronous
+	
+Authentication schemes
+	- Windows Authentication
+	- Basic 
+	- Bearer 
+	- We use 'Authorization' header in reqeust.
+		- Authorization : <schemename> <credentials>
+		-eg: Authorization : Basic jdsfkjenjfkw3kfjfjd
+		-eg: Authorization : Bearer 
+
+
+
+CORS stands for Cross-Origin Resource Sharing. It is a mechanism that allows restricted resources on a web page to be
+ requested from another domain, outside the domain from which the resource originated. A web page may freely embed images,
+ stylesheets, scripts, iframes, and videos.
+
+
+
+
+Angular (commonly referred to as "Angular 2+" or "Angular CLI") is a TypeScript-based free and open-source web application
+ framework led by the Angular Team at Google and by a community of individuals and corporations.
+ Angular is a complete rewrite from the same team that built AngularJS.
+
+
+ What is TypeScript?
+TypeScript is a superset of JavaScript that offers excellent consistency.
+ It is highly recommended, as it provides some syntactic sugar and makes the code base more comfortable to
+ understand and maintain. Ultimately, TypeScript code compiles down to JavaScript that can run efficiently in any environment.
+
+
+What are the types of data binding in angular?
+Interpolation.
+Property binding.
+Class binding.
+Style binding.
+Attribute binding.
+Event binding.
+Two-way binding.
+
+
+
+What are Single Page Applications (SPA)?
+Single-page applications are web applications that load once with new features just being mere additions to the user interface. 
+It does not load new HTML pages to display the new page's content, instead generated dynamically.
+ This is made possible through JavaScript's ability to manipulate the DOM elements on the existing page itself. 
+A SPA approach is faster, thus providing a seamless user experience.
+
+
+
+ng build:
+Compiles an Angular app into an output directory named dist/ at the given output path. Must be executed from within a workspace directory.
+
+ng build <project> [options]
+ng b <project> [options]
+
+
+Mention some advantages of Angular.
+Some of the common advantages of Angular are - 
+
+MVC architecture - Angular is a full-fledged MVC framework. 
+It provides a firm opinion on how the application should be structured. 
+It also offers bi-directional data flow and updates the real DOM.
+
+ 
+Modules: Angular consists of different design patterns like components, directives, pipes, and services, 
+which help in the smooth creation of applications.
+
+
+Dependency injection: Components dependent on other components can be easily worked around using this feature. 
+Other generic advantages include clean and maintainable code, unit testing, reusable components, data binding, 
+and excellent responsive experience.
+ ng new Myproject
+ ng g c component/Home
+ ng g p pipes/Emp
+ ng g c Services/Employee
+
+
+ CLI ->Command line interface ->scaffolds the dependencies from the inline repository from git
+
+
+What are Templates in Angular?
+ Angular Templates are written with HTML that contains Angular-specific elements and attributes.
+ In combination with the model and controller's information, these templates are further rendered
+ to provide a dynamic view to the user.
+
+
+ What are Directives in Angular?
+Directives are attributes that allow the user to write new HTML syntax specific to their applications. 
+They execute whenever the Angular compiler finds them in the DOM. Angular supports three types of directives.  
+
+Component Directives
+Structural Directives
+Attribute Directives
+ 
+*ngIf:
+A structural directive that conditionally includes a template based on the value of an expression coerced to Boolean.
+When the expression evaluates to true, Angular renders the template provided in a then clause,
+and when false or null, Angular renders the template provided in an optional else clause.
+The default template for the else clause is blank.
+
+
+What is an AOT compilation? What are its advantages?
+The Ahead-of-time (AOT) compiler converts the Angular HTML and TypeScript code into JavaScript code during the build phase,
+ i.e., before the browser downloads and runs the code.
+
+Some of its advantages are as follows. 
+
+Faster rendering
+Fewer asynchronous requests
+Smaller Angular framework download size
+Quick detection of template errors
+Better security
+
+
+What is an ngModule?
+NgModules are containers that reserve a block of code to an application domain or a workflow.
+ NgModule takes a metadata object that generally describes the way to compile the template of a component
+ and to generate an injector at runtime. In addition, it identifies the module's components, directives, and pipes,
+ making some of them public, through the export property so that external components can use them.
+
+
+
+Explain the lifecycle hooks in Angular
+In Angular, every component has a lifecycle. Angular creates and renders these components and also destroys them
+ before removing them from the DOM. This is achieved with the help of lifecycle hooks. Here's the list of them - 
+
+ngOnChanges() - Responds when Angular sets/resets data-bound input properties.
+ngOnInit() - Initialize the directive/component after Angular first displays the data-bound properties 
+             and sets the directive/component's input properties/
+ngDoCheck() - Detect and act upon changes that Angular can't or won't detect on its own.
+ngAfterContentInit() - Responds after Angular projects external content into the component's view.
+ngAfterContentChecked() - Respond after Angular checks the content projected into the component.
+ngAfterViewInit() - Respond after Angular initializes the component's views and child views.
+ngAfterViewChecked() - Respond after Angular checks the component's views and child views.
+ngOnDestroy - Cleanup just before Angular destroys the directive/component.
+
+
+
+ What is the difference between AOT and JIT? 
+Ahead of Time (AOT) compilation converts your code during the build time before the browser downloads and runs that code. 
+This ensures faster rendering to the browser. To specify AOT compilation, include the --aot option with the ng build or ng serve command. 
+
+
+
+The Just-in-Time (JIT) compilation process is a way of compiling computer code to machine code during execution or run time. 
+It is also known as dynamic compilation. JIT compilation is the default when you run the ng build or ng serve CLI commands.
+
+
+
+Explain the @Component Decorator.
+TypeScript class is one that is used to create components. This genre of class is then decorated with the "@Component" decorator.
+ The decorato’s purpose is to accept a metadata object that provides relevant information about the component.  
+
+Decorator:
+The image above shows an App component - a pure TypeScript class decorated with the “@Component” decorator.
+ The metadata object that gets accepted by the decorator provides properties like templateUrl, selector, and
+ others, where the templateUrL property points to an HTML file defining what you see on the application.
+
+
+What are Services in Angular? 
+Angular Services perform tasks that are used by multiple components. These tasks could be data and image fetching, 
+network connections, and database management among others. They perform all the operational tasks for the components
+and avoid rewriting of code. A service can be written once and injected into all the components that use that service. 
+angular services
+
+
+What are Promises and Observables in Angular? 
+While both the concepts deal with Asynchronous events in Angular, Promises handle one such event at a time while observables
+ handle a sequence of events over some time. 
+
+Promises - They emit a single value at a time. They execute immediately after creation and are not cancellable.
+ They are Push errors to the child promises. 
+
+Observables - They are only executed when subscribed to them using the subscribe() method.
+ They emit multiple values over a period of time. They help perform operations like forEach, filter, and retry, among others. 
+They deliver errors to the subscribers. When the unsubscribe() method is called, the listener stops receiving further values.
+
+
+What is Eager and Lazy loading? 
+Eager loading is the default module-loading strategy. Feature modules under Eager loading are loaded before the application starts.
+ This is typically used for small size applications.
+
+Lazy loading dynamically loads the feature modules when there's a demand.
+ This makes the application faster. It is used for bigger applications where all the modules are not required at the start of the application.
+
+1.which angular version we are using.? 
+Ans: 13
+
+2.Which .Net core version we are using?
+Ans 6.0
+
+3.Webapi version :  2 
+
+4.Html version  : 5
+
+5.Css version   : 3
+
+6.Bootstrap version  : 4
+
+7.Material js vrsn : 5
+
+8.Angular created by whom : Google  Misko Hevery
+
+9.Typescript created by whom : Microsoft 
+
+10.Angular is open source : yes 
+
+11.TypeScript which version you are using :  4
+
+12.Node js version : 4
+
+13.What is ES6.? 
+Ans : JavaScript ES6 (also known as ECMAScript 2015 or ECMAScript 6) is the newer version of JavaScript that was introduced in 2015.
+ECMAScript is the standard that JavaScript programming language uses. 
+ECMAScript provides the specification on how JavaScript programming language should work.
+
+14.What is JavaScript engine.?
+Ans: A JavaScript engine is a software component that executes JavaScript code. 
+The first JavaScript engines were mere interpreters 
+but all relevant modern engines use just-in-time compilation for improved performance.
+JavaScript engines are typically developed by web browser vendors and every major browser has one.
+In a browser the JavaScript engine runs in concert with the rendering engine via the Document Object Model.
+The use of JavaScript engines is not limited to browsers.
+For example, the V8 engine is a core component of the Node.js and Deno runtime systems.
+Since ECMAScript is the standardized specification of JavaScript, ECMAScript engine is another name for these engines. 
+With the advent of WebAssembly some engines can also execute this code in the same sandbox as regular JavaScript code.
+
+15.Why we are using Google Chrome to run.?
+Google chrome has V8 engine and mainly, Google is the one who created Angular. So, it is best to use Google chrome than others. 
+
+16.What is v8 engine.?
+V8 is the name of the JavaScript engine that powers Google Chrome.
+It's the thing that takes our JavaScript and executes it while browsing with Chrom
+it parses and executes JavaScript code.
+The DOM, and the other Web Platform APIs (they all makeup runtime environment) are provided by the browse.
+
+17.What is Typescript.?
+Ans : TypeScript is a primary language for Angular application development. 
+It is a superset of JavaScript with design-time support for type safety and 
+tooling. Browsers can't execute TypeScript directly.
+Typescript must be "transpiled"(the process of interpreting certain programming languages and 
+translating it to a specific target language)into JavaScript using the tsc compiler, which requires some 
+configuration.
+
+18.How many types of data binding in Angular : 3 types 
+1.Interpolation Binding.?
+Ans : Interpolation binding is used to return HTML output from TypeScript code i.e. from the components to the views. 
+2. Property Binding.?
+In Property binding value flows from a component’s property into the target elements property.
+3. Event Binding
+The Event binding feature lets you listen to certain events such as mouse movements, keystrokes, clicks, etc.
+
+
+19.What is SPA.?
+Ans : Single Page Applications are web applications that load a single HTML page and only a part 
+of the page instead of the entire page gets updated with 
+every click of the mouse. The page does not reload or transfer control to another page during the process.
+This ensures high performance and loading pages faster.
+
+20.How do you implement single page application.?
+Ans : 1.Organize a sample application's features into modules.
+2.Define how to navigate to a component.   
+3.Pass information to a component using a parameter.
+4.Structure routes by nesting several routes.
+5.Check whether users can access a route.
+6.Control whether the application can discard unsaved changes.
+7.Improve performance by pre-fetching route data and lazy loading feature modules.
+8.Require specific criteria to load components.
+
+21.What are the advantages of Angular.?
+1.Effective Cross-Platform Development
+2.High Quality of the Application
+3.Improved Speed and Performance
+4.Faster Development Process
+5.Readable and Testable Code
+6.More Lightweight Web Applications
+
+22.Why we choose Angular?
+Ans : Angular helps build interactive and dynamic single page applications (SPAs)
+ through its compelling features that include templating,
+two-way binding, modularization, RESTful API handling, dependency injection, and AJAX handling.
+
+23.What is mvc in Angular.?
+Angular supports the MVC pattern. MVC i.e. Model View Controller is a software design pattern 
+used for the development of web applications. 
+It comprises of the following parts:
+
+Model – The lowest level of the pattern, the model consists of a database. 
+The responsibility of managing the application data is given to the model.
+In simpler terms, it manages the data and the logic of the application.
+
+View – The View is responsible for displaying parts of the data or the entire data to the user.
+ To display the data from the controller,we can add Angular expressions to the view,
+ which coordinate the model and view about any modifications. 
+In simpler terms, the view is the user interface,
+which showcases the output.
+
+Controller – The control over the model and view is provided by the controller, i.e.
+ it controls the retrieval of the data, along with the display. 
+In simpler terms, the controller manages the interaction between the model and the view part.
+
+
+24.What is react.?
+React allows developers to create large web applications that can change data, without reloading the page.
+ The main purpose of React is to be fast scalable and simple.
+ It works only on user interfaces in the application.
+ This corresponds to the view in the MVC template.
+
+Angular is used by companies Google, Forbes, Youtube, Wix, telegram.
+React is used by companies Facebook, Instagram, Twitter, Airbnb, Netflix, Paypal, Uber.
+
+
+25.Angular commands :(Ng serve or Ng build command using..creates separate file->zip it
+ ->create dist folder..make production deployable)
+Ng new project name (create whole structure of a project)
+Ng g s service Name (Creating a service)
+Ng g c Component Name (Creating a component with 4 file html,ts,spec,css)
+Ng g p Pipe Name(creating a pipe)
+
+
+26.What is templates in Angular.?( content http templates)
+Ans : A template is a form of HTML that tells Angular how to render the component. 
+Views are typically arranged hierarchically allowing you to modify or show and hide entire UI sections or pages as a unit.
+ The template immediately associated with a component defines that component's host view.
+
+27.Spec file is used for.?  Ans : testing
+
+28.What types of directive u have.?
+Ans : The three types of directives in Angular are attribute directives, structural directives, and components.
+Components are directives that have a template.
+Structural directives change the DOM layout by adding and removing DOM elements.
+Attribute directives change the appearance or behavior of an element.
+
+29.Ng stands for.? it is a angular short form
+
+30.AOT feature.? (Belongs to version 10)
+Ans : The Angular ahead-of-time (AOT) compiler converts your Angular HTML and TypeScript code into efficient
+ JavaScript code during the build phase before the browser downloads and runs that code. 
+Compiling your application during the build process provides a faster rendering in the browser.
+
+31.What is ng modules.?
+Ans : NgModules configure the injector and the compiler and help organize related things together.
+ An NgModule is a class marked by the @NgModule decorator.
+@NgModule takes a metadata object that describes how to compile a component's template and how to create an injector at runtime.
+
+32.What is lifecycle hooks.?
+Ans : Lifecycle hooks are a special functionality in Angular that allow us to “hook into” and run 
+code at a specific lifecycle event of a component or directive.
+Angular manages components and directives for us   when it creates them, updates them, or destroys them. 
+With lifecycle hooks, we can gain better control of our application.
+
+OnInit :	Called on initialization
+OnChanges :	Called when the input properties have changed
+DoCheck: Developer’s custom change detection
+Destroy: Called before the component is destroyed
+AfterContentInit: Called when the component’s content ngContent is initialized
+AfterContentChecked: Called when the component’s content is updated or checked for updates
+AfterViewInit: Called when the component’s projected view has been initialized
+AfterViewChecked: Called after the projected view has been checked
+
+33.What are the injectors.?
+Ans : Injectors are data structures that store instructions detailing where and how services form.
+ They act as intermediaries within the Angular DI system 
+Module, directive, and component classes contain metadata specific to injectors.
+ A new injector instance accompanies every one of these classes.
+
+34.What are promises.?
+Ans : Promises in Angular provide an easy way to execute asynchronous functions that use callbacks,
+ while emitting and completing (resolving or rejecting)one value at a time.
+ When using an Angular Promise, you are enabled to emit a single event from the API. 
+Then, the controller (or the directive) takes on, 
+registering up to three callbacks – success, error, and/or notifications.
+There are four states of the Angular Promise:
+
+1.fulfilled - action is fulfilled
+2.rejected - action failed
+3.pending - action hasn’t succeeded or failed yet
+4.settled - action is either fulfilled or rejected
+
+
+35.What are subscriber.?
+Ans : Subscribe() is a method in Angular that connects the observer to observable events. 
+Whenever any change is made in these observable, a code is 
+executed and observes the results or changes using the subscribe method. 
+Subscribe() is a method from the rxjs library, used internally by Angular.
+
+36.What are observable.?
+Ans :Observable in Angular is a feature that provides support for delivering messages 
+between different parts of your single-page application. 
+This feature is frequently used in Angular because it is responsible for handling multiple values 
+asynchronous programming in Javascript, and also event handling processes.
+
+37.Do u have lazy loading.?
+38.What is dependency injection.?
+39.What is jwt.?
+40.What is exception handling.?
+41.How do u implement exception handling.?
+42.Why we r doing exception handling.?
+43.have u use ado.net.?
+
+
+AOT VS JIT:
+JIT downloads the compiler and compiles code exactly before Displaying in the browser.	
+AOT has already complied with the code while building your application, so it doesn’t have to compile at runtime.
+Loading in JIT is slower than the AOT because it needs to compile your application at runtime.
+Loading in AOT is much quicker than the JIT because it already has compiled your code at build time.
+JIT is more suitable for development mode.
+AOT is much suitable in the case of Production mode.
+Bundle size is higher compare to AOT.	
+Bundle size optimized in AOT, in results AOT bundle size is half the size of JIT bundles.
+You can run your app in JIT with this command:
+ng build OR ng serve
+To run your app in AOT you have to provide –aot at the end like:
+ng build --aot OR ng serve --aot  
+You can catch template binding error at display time.
+You can catch the template error at building your application.
+
+
+
+ExecuteNonQuery is one of the method used in SQL command object executing statement that do not return result set,
+ it perform data definition task and data manipulation task also.
+
+
+
+ExecuteNonQuery method is used to execute SQL Command or the storeprocedure performs, 
+INSERT, UPDATE or Delete operations. It doesn't return any data from the database.
+ Instead, it returns an integer specifying the number of rows inserted, updated or deleted.
+
+
+The ". tt" extension indicates a T4 template file. 
+In this case the template file is responsible for generating 
+the classes that are represented by the Entity Model defined in your edmx file.
+
+
+
+Development Environment 
+Microsoft Visual Studio 2019, 2022. 
+Visual Studio Code (Text-editor) 
+.NET Core 3.1 and above 
+Command Line (Optional)
+Internet Information Services (IIS) 7.0+ 
+Microsoft SQL Server 2019 
+
+Browser support 
+Chrome 	Firefox 	Opera 	Edge 	IE 
+Latest 	Latest	Latest	13 + 	11 + 
+
+Specification and other Technologies 
+Angular as front end and ASP.NET Core Web API as Backend. 
+HTML 5 
+CSS 
+JavaScript 
+Typescript
+
+
+
+Using dependency injection, we can pass an instance of class C to class B,
+ and pass an instance of B to class A, instead of having these classes to construct the instances of B and C.
+
+In the example, below, class Runner has a dependency on the class Logger.
+
+
+SQL is a Structured Query Language used to save and retrieve data from a database.
+ In the same way, LINQ is a structured query syntax built in C# and VB.NET to retrieve data 
+from different types of data sources such as collections, ADO.Net DataSet,
+ XML Docs, web service and MS SQL Server and other databases.
+
+app.Run() will end the request, and app.Use() will pass the request to next middleware.
+
+out keyword is used when a called method has to update multiple parameter passed.
+ref keyword is used to pass data in bi-directional way. out keyword is used to get data in uni-directional way.
+
+
+readonly is a constant defined at runtime. const is used to create a constant at compile time. 
+readonly field value can be changed after declaration. const field value cannot be changed after declaration.
+
+
+
+                  Abstract Clas					     Interface
+It contains both declaration and definition part.	   It contains only a declaration part.
+Multiple inheritance is not achieved by abstract class.	   Multiple inheritance is achieved by interface.
+It contain constructor.                  		   It does not contain constructor.
+
+
+The function must return a value, but in Stored procedure it is optional.
+ Even a stored procedure can return zero or n values.
+ Functions can be called from Stored procedures while a Stored procedure cannot be called from a function.
+
+
+1.what is an Abstract class?
+An abstract class is an incomplete class or special class we can't be instantiated. The purpose of an abstract class is to 
+provide a blueprint for derived classes and set some rules what the derived classes must implement when they inherit an abstract class.
+
+2. what is Interface?
+Interface in C# is a blueprint of a class. It is like abstract class because all the methods which are declared inside the interface are abstract methods. 
+It cannot have method body and cannot be instantiated.It is used to achieve multiple inheritance which can't be achieved by class.
+ It is used to achieve fully abstraction because it cannot have method body.
+
+3. what are access Specifiers?
+
+there are 5 access specifiers in c#
+
+1.Public - It specifies that access is not restricted.
+2.Protected - It specifies that access is limited to the containing class or in derived class.
+3.Internal- It specifies that access is limited to the current assembly.
+4.protected internal - It specifies that access is limited to the current assembly or types derived from the containing class.
+5.Private - It specifies that access is limited to the containing type.
+
+4. what are get and set properties?
+ In properties, a get accessor is used to return a property value and a set accessor is used to assign a new value.
+ The value keyword in set accessor is used to define a value that is going to be assigned by the set accessor.
+ In c#, the properties are categorized as read-write, read-only, or write-only.
+
+5.what is Inheritance?
+inheritance is a process in which one object acquires all the properties and behaviors of its parent object automatically. 
+In such way, you can reuse, extend or modify the attributes and behaviors which is defined in other class.
+the class which inherits the members of another class is called derived class and the class whose members are inherited is called base class
+ The derived class is the specialized class for the base class.
+
+Example:
+
+   using System;  
+   public class Employee  
+    {  
+       public float salary = 40000;  
+   }  
+   public class Programmer: Employee  
+   {  
+       public float bonus = 10000;  
+   }  
+   class TestInheritance{  
+       public static void Main(string[] args)  
+        {  
+            Programmer p1 = new Programmer();  
+  
+            Console.WriteLine("Salary: " + p1.salary);  
+            Console.WriteLine("Bonus: " + p1.bonus);  
+  
+        }  
+    }  
+
+6.what is overloading?
+
+In C# there might be two or more methods in a class with the same name but different numbers, types, and order of parameters, it is called method overloading. For example:
+
+void display() { ... }
+void display(int a) { ... }
+float display(double a) { ... }
+float display(int a, float b) { ... }
+Here, the display() method is overloaded.
+These methods have the same name but accept different arguments.
+
+7. what is overriding?
+An override method provides a new implementation of the method inherited from a base class. 
+
+Example:
+We have two classes: A child class Boy and a parent class Human. The Boy class extends Human class. Both the classes have a common method void eat() .
+ Boy class is giving its own implementation to the eat() method or in other words it is overriding the eat() 
+
+
+8.what is Extention Methods?
+
+C# allows us to create and add new methods to existing class without creating a new child class. The existing class does not require recompiling the code. 
+C# extension methods are the special type of the static methods that can be called as instance methods.
+
+We need to consider the following points to define an extension method.
+
+An extension method should be a static method.
+
+It must have this keyword associate with class name.
+
+The class name should be the first parameter in the parameter list.
+
+In the following example, we are adding an extension method GetUpperCase() in C# String class.
+
+Example:
+
+using System;  
+namespace CSharpFeatures  
+{  
+    public static class StringHelper  
+    {  
+        public static string GetUpperCase(this string name)  
+        {  
+            return name.ToUpper();  
+        }  
+    }  
+    public class ExtensionMethodExample  
+    {  
+        static string name = "ANIKET";  
+        static void Main(string[] args)  
+        {  
+            string str = name.GetUpperCase();  
+            Console.WriteLine(str);  
+        }  
+    }  
+
+}
+
+
+
+9.What are Features new of c# 8.o?
+The new C# 8 features
+1.Default interface methods.
+2.Nullable reference types.
+3.Pattern matching enhancements.
+4.Asynchronous streams / Asynchronous disposable.
+5.Using declarations.
+6.Enhancement of interpolated verbatim strings.
+7.Null-coalescing assignment.
+8.Static local functions.
+
+
+10. what are constructor?
+constructor is a special method which is invoked automatically at the time of object creation. 
+It is used to initialize the data members of new object generally. The constructor in C# has the same name as class or struct.
+
+There can be two types of constructors in C#.
+
+1.Default constructor
+2.Parameterized constructor
+
+Default contructor Example:
+
+   using System;  
+   public class Employee  
+    {  
+        public Employee()  
+        {  
+            Console.WriteLine("Default Constructor");  
+        }  
+        public static void Main(string[] args)  
+        {  
+            Employee e1 = new Employee();  
+            Employee e2 = new Employee();  
+        }  
+    }  
+
+parametererized constructor Example :
+
+   using System;  
+   public class Employee  
+    {  
+        public int id;   
+        public String name;  
+        public float salary;  
+        public Employee(int i, String n,float s)  
+        {  
+            id = i;  
+            name = n;  
+            salary = s;  
+        }  
+        public void display()  
+        {  
+            Console.WriteLine(id + " " + name+" "+salary);  
+        }  
+   }  
+   class TestEmployee{  
+       public static void Main(string[] args)  
+        {  
+            Employee e1 = new Employee(101, "Aniket", 890000f);  
+            Employee e2 = new Employee(102, "Sachin", 490000f);  
+            e1.display();  
+            e2.display();  
+  
+        }  
+    }  
+
+
+11. What is collection Framework?
+
+collection represents group of objects. By the help of collections, we can perform various operations on objects such as
+
+store object
+update object
+delete object
+retrieve object
+search object, and
+sort object.
+
+all the data structure work can be performed by C# collections.
+We can store objects in array or collection. Collection has advantage over array. Array has size limit but objects stored in collection can grow or shrink dynamically.
+
+Types of Collections in C#
+
+There are 3 ways to work with collections.
+System.Collections.Generic classes
+System.Collections classes (Now deprecated)
+System.Collections.Concurrent classes.
+
+
+
+12.what is Generics?
+Generic is a concept that allows us to define classes and methods with placeholder. The concept of generics is used to create general purpose classes and methods.
+
+define generic class, we must use angle <> brackets. The angle brackets are used to declare a class or method as generic type. 
+
+Generic class example
+using System;  
+namespace CSharpProgram  
+{  
+    class GenericClass<T>  
+    {  
+        public GenericClass(T msg)  
+        {  
+            Console.WriteLine(msg);  
+        }  
+    }  
+    class Program  
+    {  
+        static void Main(string[] args)  
+        {  
+            GenericClass<string> gen   = new GenericClass<string> ("generic class");  
+            GenericClass<int>    genI  = new GenericClass<int>(101);  
+            GenericClass<char>   getCh = new GenericClass<char>('I');  
+        }  
+    }  
+}  
+
+
+
+
+Generic Method Example
+using System;  
+namespace CSharpProgram  
+{  
+    class GenericClass  
+    {  
+        public void Show<T>(T msg)  
+        {  
+            Console.WriteLine(msg);  
+        }  
+    }  
+    class Program  
+    {  
+        static void Main(string[] args)  
+        {  
+            GenericClass genC = new GenericClass();  
+            genC.Show("generic method");  
+            genC.Show(101);  
+            genC.Show('I');  
+        }  
+    }  
+}  
+
+
+13.What is Array List?
+
+ ArrayList is a  feature of C# language. It is the non-generic type of collection which is defined in System.Collections namespace.
+ It is used to create a dynamic array means the size of the array is increase or decrease automatically according to the requirement of your program,
+ there is no need to specify the size of the ArrayList. Or in other words, ArrayList represents an ordered collection of an object that can be indexed individually.
+ In ArrayList, you can store elements of the same type and of the different types. It belongs to the non-generic collection.
+
+
+14.what is List<T>?
+
+The List<T> is a collection of strongly typed objects that can be accessed by index and having methods for sorting, searching, and modifying list. 
+It is the generic version of the ArrayList that comes under System.Collections.Generic namespace.
+
+List<T> Characteristics
+
+List<T> equivalent of the ArrayList, which implements IList<T>.
+It comes under System.Collections.Generic namespace.
+List<T> can contain elements of the specified type. It provides compile-time type checking and doesn't perform boxing-unboxing because it is generic.
+Elements can be added using the Add(), AddRange() methods or collection-initializer syntax.
+Elements can be accessed by passing an index e.g. myList[0]. Indexes start from zero.
+List<T> performs faster and less error-prone than the ArrayList.
+
+Example:
+
+List<int> primeNumbers = new List<int>();
+primeNumbers.Add(1); 
+primeNumbers.Add(3);
+primeNumbers.Add(5);
+primeNumbers.Add(7);
+
+var cities = new List<string>();
+cities.Add("New York");
+cities.Add("London");
+cities.Add("Mumbai");
+cities.Add("Chicago");
+cities.Add(null);
+
+var bigCities = new List<string>()
+                    {
+                        "New York",
+                        "London",
+                        "Mumbai",
+                        "Chicago"                    
+                    };
+
+
+
+
+
+15.Diffrence between String and StringBuilder?
+Strings in C#
+
+String is immutable in C# that would mean you couldn’t modify it after it is created. It creates a new object of string type in memory if you will perform any operation.
+Example:
+string str1 = "Welcome!";
+str1 += "Hello";
+str1 += "World”;
+
+StringBuilder in C#
+StringBuilder is mutable in C#. This means that if an operation is performed on the string, it will not create a new instance every time.
+With that, it will not create new space in memory, unlike Strings.
+
+Example:
+
+StringBuilder str1 = new StringBuilder("");
+str1.Append("Welcome!");
+str1.Append("Hello World!");
+string str2 = str1.ToString();
+
+
+16.Difference between public and internal?
+internal is useful when you want to declare a member or type inside a DLL, not outside that. Normally, when you declare a member as public , you can access that from other DLLs.
+But, if you need to declare something to be public just inside your class library, you can declare it as internal.
+Internal is only available within the assembly it resides in. Public is available to any assembly referencing the one it resides in.
+If you can access the internal class from another assembly you either have "InternalsVisibleTo" set up, or you're not referencing the class you think you are.
+
+
+17. what is string and stringbuilder ?
+
+The string is an immutable type in C#, which means it can't be changed once it's been created.StringBuilder, on the other hand, is mutable,
+which means that if an operation is performed on the string object, it won't construct a new instance in memory every time, unlike string.
+
+
+18. what is read only and constant?
+
+readonly keyword is used to define a variable which can be assigned once after declaration either during declaration or in constructor. 
+const keyword is used to define a constant to be used in the program. 
+
+
+19. what is sealed class ?
+
+when we don't want a class to be inherited by another class, we can declare the class as a sealed class.
+ A sealed class cannot have a derived class. We use the sealed keyword to create a sealed class.
+
+
+20. what is assembly ?
+
+C# Assembly is a standard library developed for . NET.Common Language Runtime, CLR, MSIL, Microsoft Intermediate Language, Just In Time Compilers, 
+JIT, Framework Class Library, FCL, Common Language Specification, CLS, Common Type System, CTS, Garbage Collector, GC.
+
+
+21. what is NameSpace ?
+
+Namespaces are used to organize code into logical groups and to prevent 
+name collisions that can occur especially when your code base includes 
+multiple libraries. All identifiers at namespace scope are visible to one 
+another without qualification.
+
+22.Boxing and Unboxing ?
+
+Boxing is the process of converting a value type to the type object or to 
+any interface type implemented by this value type. When the common language
+runtime (CLR) boxes a value type, it wraps the value inside a System. 
+Object instance and stores it on the managed heap. Unboxing extracts the 
+value type from the object.
+
+
+23.What is heap memory?
+
+“Heap” memory, also known as “dynamic” memory, is an alternative to local 
+stack memory. Local memory is quite automatic. Local variables are 
+allocated automatically when a function is called, and they are 
+deallocated automatically when the function exits. Heap memory is different
+in every way.
+
+24. What is Private Constructor?
+Private constructor is a special instance constructor which is used in a class that contains static member only.
+If a class has one or more private constructor and no public constructor then other classes is not allowed to create instance of this class this mean you can neither create the object of the class nor it can be inherit by other class.
+The main purpose of creating private constructor is to restrict the class from being instantiated when it contains every member as static.
+
+25. What is Destructor?
+A Destructor is automatically invoked when an object is finally destroyed.
+The name of the Destructor is the same as class and prefixed with a tilde (~).
+A Destructor is used to free the dynamic allocated memory and release the resources.
+
+26.What are Virtual, Override, and New keywords in C#?
+Virtual is used to modify a method, property, indexer, or event declared in the base class and allows it to be overridden in the derived class.
+Override is used to extend or modify a virtual/abstract method, property, indexer, or event of the base class into the derived class.
+New is used to hide a method, property, indexer, or event of the base class into the derived class.
+ 
+27. What is Implicit interface implementation?
+This is the most regular or obvious way to implement members of an interface.
+Here you do not specify the interface name of the members and implement implicitly
+
+28. What is Explicit interface implementation?
+This is another way to implement members of an interface.
+Here you need to specify the interface name of the members.
+The constraint with explicit implementation is that an explicitly implemented member can not be accessed using a class instance, but only through an instance of the interface.
+
+29. What is the difference between Abstraction and Encapsulation?
+Encapsulation is wrapping, it's just hiding properties and methods.
+Encapsulation is used for hiding the code and data in a single unit to protect the data from the outside world.
+Class is the best example of encapsulation.
+Abstraction refers to showing only the necessary details to the intended user.
+
+30. Is it possible to achieve Method extension using Interface?
+Yes, it is possible to achieve Method extension using Interface.
+Most of the LINQ is built around interface extension methods.
+Interfaces were actually one of the driving forces for the development of extension methods.
+Since they can not implement any of their own functionality and extension methods are the easiest way of associating actual code with interface definitions.
+
+
+
+
+
+
+
+
+
+
+
+doselect link
+https://github.com/Geethach-14/Chavata_Geethavani_doselect_result
