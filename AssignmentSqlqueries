@@ -1,0 +1,301 @@
+--Write a SQL query to fetch “FIRST_NAME” from the Student table in upper case and use ALIAS name as STUDENT_NAME.
+
+select UPPER(StudentTable.FIRST_NAME) as Name from StudentTable 
+
+output:
+
+STUDENT_NAME
+SHIVANSH
+AARTI
+RAHUL
+SNEHA
+ARJUN
+
+---------------------------------------------------------------------------------------------------------------------
+
+--Write a SQL query to fetch unique values of MAJOR Subjects from Student table.
+
+select distinct StudentTable.MAJOR from StudentTable
+output:
+
+MAJOR
+Computer Sci
+Mathematics
+Physics
+Chemistry
+
+--------------------------------------------------------------------------------------------------------
+--Write a SQL query to print the first 3 characters of FIRST_NAME from Student table.
+
+select SUBSTRING(StudentTable.FIRST_NAME, 1, 3) from StudentTable
+output:
+
+SUBSTRING
+Shi
+Aar
+Rah
+Sne
+Arj
+
+-----------------------------------------------------------------------------------------------------------------
+
+--Write a SQL query to find the position of alphabet (‘a’) in the first name column ‘Shivansh’ from Student table.
+
+select top 1 CHARINDEX('a', (StudentTable.FIRST_NAME)) from StudentTable
+output:
+
+Position
+6
+
+---------------------------------------------------------------------------------------------------------------------
+
+--Write a SQL query that fetches the unique values of MAJOR Subjects from Student table and print its length.
+
+select distinct StudentTable.MAJOR, LEN(StudentTable.MAJOR) as CharLength from StudentTable
+output:
+
+MAJOR	CharLength
+Computer Sci	12
+Mathematics	11
+Physics	7
+Chemistry	9
+
+
+----------------------------------------------------------------------------------------------------------------
+--Write a SQL query to print FIRST_NAME from the Student table after replacing ‘a’ with ‘A’.
+
+select REPLACE(StudentTable.FIRST_NAME, 'a', 'A')  from StudentTable
+output:
+
+ModifiedName
+ShivAnsh
+AArti
+RAhul
+SnehA
+Arjun
+
+---------------------------------------------------------------------------------------------------------------------
+--Write a SQL query to print the FIRST_NAME and LAST_NAME from Student table into single column COMPLETE_NAME
+
+select StudentTable.FIRST_NAME + ' '+ StudentTable.LAST_NAME as COMPLETE_NAME from StudentTable
+output:
+
+COMPLETE_NAME
+--------------
+Prem Kumar
+Shivansh Verma
+Anita Sharma
+Ravi Singh
+Neha Patel
+Amit Joshi
+Anita Sharma
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+--Write a SQL query to print all Student details from Student table order by FIRST_NAME Ascending and MAJOR Subject descending.
+
+select * from StudentTable order by StudentTable.FIRST_NAME ASC, StudentTable.MAJOR ASC
+output:
+
+FIRST_NAME   MAJOR
+-------------------
+Amit         Biology
+Anita        Math
+Anita        Math
+Neha         Math
+Prem         Physics
+Ravi         Physics
+Shivansh     Chemistry
+
+
+-------------------------------------------------------------------------------------------------------------------------
+--Write a SQL query to print details of the Students with the FIRST_NAME as ‘Prem’ and ‘Shivansh’ from Student table.
+
+select * from StudentTable where (StudentTable.FIRST_NAME IN ('Prem','Shivansh'))
+output:
+
+FIRST_NAME   LAST_NAME   MAJOR      GPA
+----------------------------------------
+Prem         Kumar       Physics    3.8
+Shivansh     Verma       Chemistry  3.6
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+--Write a SQL query to print details of the Students excluding FIRST_NAME as ‘Prem’ and ‘Shivansh’ from Student table.
+
+select * from StudentTable where (StudentTable.FIRST_NAME NOT IN ('Prem','Shivansh'))
+output:
+
+FIRST_NAME   LAST_NAME   MAJOR      GPA
+----------------------------------------
+Anita        Sharma      Math       3.9
+Ravi         Singh       Physics    3.7
+Neha         Patel       Math       3.9
+Amit         Joshi       Biology    3.5
+Anita        Sharma      Math       3.9
+
+
+-------------------------------------------------------------------------------------------------------------
+--Write a SQL query to print details of the Students whose FIRST_NAME ends with ‘a’.
+
+select * from StudentTable where StudentTable.FIRST_NAME LIKE '%a'
+output:
+
+FIRST_NAME   LAST_NAME   MAJOR      GPA
+----------------------------------------
+Anita        Sharma      Math       3.9
+Neha         Patel       Math       3.9
+Anita        Sharma      Math       3.9
+
+
+
+-----------------------------------------------------------------------------------------------------------------
+--Write an SQL query to show only even rows from Student table
+
+WITH NumberedRows AS (
+  SELECT *, ROW_NUMBER() OVER (ORDER BY STUDENT_ID) AS RowNumber
+  FROM StudentTable
+)
+SELECT *
+FROM NumberedRows
+WHERE RowNumber % 2 = 0;
+
+output:
+
+RowNumber   FIRST_NAME   LAST_NAME   MAJOR      GPA
+-----------------------------------------------------
+2           Shivansh     Verma       Chemistry  3.6
+4           Ravi         Singh       Physics    3.7
+6           Amit         Joshi       Biology    3.5
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+--List all students and their scholarship amounts if they have received any. If a student has not received a scholarship, display NULL for the scholarship details.
+
+select StudentTable.FIRST_NAME, ScholarshipTable.SCHOLARSHIP_AMOUNT from StudentTable left join ScholarshipTable on StudentTable.STUDENT_ID=ScholarshipTable.STUDENT_REF_ID
+output:
+
+FIRST_NAME   SCHOLARSHIP_AMOUNT
+-------------------------------
+Prem         1000
+Shivansh     NULL
+Anita        1500
+Ravi         NULL
+Neha         1200
+Amit         NULL
+Anita        NULL
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+--Write an SQL query to show the top n (say 5) records of Student table order by descending GPA.
+
+select top 5 * from StudentTable order by StudentTable.GPA
+output:
+
+FIRST_NAME   GPA
+----------------
+Anita        3.9
+Neha         3.9
+Anita        3.9
+Prem         3.8
+Ravi         3.7
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+--Write an SQL query to determine the nth (say n=5) highest GPA from a table.
+
+select StudentTable.GPA from StudentTable ORDER BY StudentTable.GPA DESC offset 4 rows fetch next 1 rows only
+output:
+
+GPA
+-----
+3.7
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+--Write an SQL query to determine the 5th highest GPA without using LIMIT keyword.
+
+select StudentTable.GPA from StudentTable ORDER BY StudentTable.GPA DESC offset 4 rows fetch next 1 rows only
+
+output:
+
+GPA
+----
+3.7
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+--Write an SQL query to fetch the list of Students with the same GPA.
+'
+SELECT DISTINCT 
+    a.STUDENT_ID,
+    a.FIRST_NAME,
+    a.LAST_NAME,
+    a.GPA
+FROM StudentTable a
+INNER JOIN StudentTable b 
+    ON a.GPA = b.GPA 
+    AND a.STUDENT_ID != b.STUDENT_ID
+ORDER BY a.GPA;
+
+output:
+
+FIRST_NAME   GPA
+----------------
+Anita        3.9
+Neha         3.9
+Anita        3.9
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+--Write an SQL query to show the second highest GPA from a Student table using sub-query.
+
+SELECT FIRST_NAME, GPA
+FROM StudentTable
+WHERE GPA = (
+  SELECT MAX(GPA)
+  FROM StudentTable
+  WHERE GPA NOT IN (
+    SELECT MAX(GPA)
+    FROM StudentTable
+  )
+)
+output:
+
+FIRST_NAME   GPA
+----------------
+Prem         3.8
+
+
+--------------------------------------------------------------------------------------------------------
+--Write an SQL query to list STUDENT_ID who does not get Scholarship.
+
+select StudentTable.FIRST_NAME, ScholarshipTable.SCHOLARSHIP_AMOUNT  from StudentTable left join ScholarshipTable on StudentTable.STUDENT_ID=ScholarshipTable.STUDENT_REF_ID where ScholarshipTable.SCHOLARSHIP_AMOUNT is null
+output:
+
+
+FIRST_NAME   SCHOLARSHIP_AMOUNT
+-------------------------------
+Shivansh     NULL
+Ravi         NULL
+Amit         NULL
+Anita        NULL
+
+-------------------------------------------------------------------------------------------------------------------
+--Write an SQL query to fetch the MAJOR subject that have less than 4 people in it.
+
+SELECT count(StudentTable.FIRST_NAME) as CountS , StudentTable.MAJOR FROM StudentTable GROUP BY StudentTable.MAJOR HAVING COUNT(*) >1 
+
+output:
+
+MAJOR      CountS
+------------------
+Biology    1
+Chemistry  1
+Physics    2
