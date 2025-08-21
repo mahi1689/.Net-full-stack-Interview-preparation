@@ -1,0 +1,1469 @@
+.NET INTERVIEW C# Programs
+
+
+
+
+
+
+Anagram.txt
+//Write a method that checks if two strings are anagrams of each other.
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public class Problem
+{
+    public void Solution(string str1, string str2)
+    {
+        List<char> s1 = str1.ToList();
+        s1.Sort();
+
+        List<char> s2 = str2.ToList();
+        s2.Sort();
+
+        if (s1.SequenceEqual(s2))
+        {
+            Console.WriteLine("Anagram");
+        }
+        else
+        {
+            Console.WriteLine("Not Anagram");
+        }
+    }
+}
+
+public class Solve
+{
+    public static void Main(string[] args)
+    {
+        Problem p = new Problem();
+        string str1 = "listen";
+        string str2 = "silent";
+        p.Solution(str1, str2);
+    }
+}
+
+
+
+output:
+
+Anagram
+
+=== Code Execution Successful ===
+
+
+
+
+
+
+
+
+
+
+
+``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+**//ArrayList Problem**
+
+
+
+**/\***
+
+**Problem:**
+
+**You are given an ArrayList containing a mix of integers and strings.**
+
+    **1. Create a new ArrayList that contains only the integers from the original list.**
+
+    **2. Calculate and print the sum of all the integers in the new ArrayList.**
+
+    **3. remove all the even numbers from the new ArrayList.**
+
+    **4. Print the remaining integers.**
+
+**\*/**
+
+
+
+using System;
+using System.Collections;
+
+public class Problem
+{
+    public void ArrProblem(ArrayList arr)
+    {
+        ArrayList intList = new ArrayList();
+
+        // Step 1: Extract integers
+        foreach (var item in arr)
+        {
+            if (item is int)
+            {
+                intList.Add((int)item);
+            }
+        }
+
+        // Step 2: Calculate and print sum
+        int sum = 0;
+        foreach (int num in intList)
+        {
+            sum += num;
+        }
+        Console.WriteLine("Sum of integers: " + sum);
+
+        // Step 3: Remove even numbers
+        ArrayList oddList = new ArrayList();
+        foreach (int num in intList)
+        {
+            if (num % 2 != 0)
+            {
+                oddList.Add(num);
+            }
+        }
+
+        // Step 4: Print remaining integers
+        Console.WriteLine("Remaining odd integers:");
+        foreach (int num in oddList)
+        {
+            Console.WriteLine(num);
+        }
+    }
+}
+
+public class Solve
+{
+    public static void Main(string[] args)
+    {
+        Problem p = new Problem();
+        ArrayList arr = new ArrayList { 2, "Maa", 4, 3, 5, "dds", 4, 6, 2, 6, "fda" };
+        p.ArrProblem(arr);
+    }
+}
+
+
+
+
+output:
+
+Sum of integers: 32
+Remaining odd integers:
+3
+5
+
+=== Code Execution Successful ===
+
+
+
+
+
+
+
+
+
+
+**``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````**
+
+
+
+
+
+
+
+**//CharCountDictionary**
+
+
+
+
+
+
+
+
+
+//Write down C# Code to get count of each letter in msg string as shown below,
+
+//string msg ="AAdDEEeTAFaBEA"
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+
+public class Problem
+{
+    public void strConvertion(string s)
+    {
+        s = s.ToLower(); // Convert to lowercase for case-insensitive counting
+        Dictionary<char, int> charCount = new Dictionary<char, int>();
+
+        foreach (char c in s)
+        {
+            if (charCount.ContainsKey(c))
+            {
+                charCount[c] += 1;
+            }
+            else
+            {
+                charCount[c] = 1;
+            }
+        }
+
+        foreach (var c in charCount)
+        {
+            Console.WriteLine($"Char: {c.Key} -> Count: {c.Value}");
+        }
+    }
+}
+
+public class Solve
+{
+    public static void Main(string[] args)
+    {
+        Problem p = new Problem();
+        string msg = "AAdDEEeTAFaBEA";
+        p.strConvertion(msg);
+    }
+}
+
+
+
+output:
+
+Char: a -> Count: 5
+Char: d -> Count: 2
+Char: e -> Count: 4
+Char: t -> Count: 1
+Char: f -> Count: 1
+Char: b -> Count: 1
+
+=== Code Execution Successful ===
+
+
+
+
+
+
+
+
+
+
+
+
+**````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````**
+
+
+
+**//CustomeException**
+
+
+**//Create a custom exception class and demonstrate how to throw and catch it.**
+
+
+
+
+
+
+
+
+
+
+
+using System;
+
+// Custom exception class
+public class CustomException : Exception
+{
+    public CustomException(string message) : base(message)
+    {
+    }
+}
+
+// Class that uses the custom exception
+public class Problem
+{
+    int num;
+    string name;
+
+    public Problem(int number, string names)
+    {
+        num = number;
+        name = names;
+    }
+
+    public void tryCatch()
+    {
+        try
+        {
+            if (num < 1)
+            {
+                throw new CustomException($"Invalid input: {name}, number must be greater than 0.");
+            }
+
+            int result = 10 / num;
+            Console.WriteLine($"Result: {result}");
+        }
+        catch (CustomException e)
+        {
+            Console.WriteLine("Caught Custom Exception:");
+            Console.WriteLine(e.Message);
+        }
+    }
+}
+
+// Main class
+public class Solve
+{
+    public static void Main(string[] args)
+    {
+        Problem p = new Problem(0, "mahafuz");
+        p.tryCatch();
+    }
+}
+
+
+
+output:
+
+//Problem p = new Problem(0, "mahafuz");
+
+Caught Custom Exception:
+Invalid input: mahafuz, number must be greater than 0.
+
+=== Code Execution Successful ===
+
+
+
+
+//Problem p = new Problem(5, "mahafuz");
+
+Result: 2
+
+=== Code Execution Successful ===
+
+
+
+
+
+**``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````**
+
+
+
+
+
+
+
+**//DependencyInjection Implementation**
+
+
+
+
+
+
+using System;
+
+public interface IMessage
+{
+    void Send(string s);
+}
+
+public class Email : IMessage
+{
+    public void Send(string s)
+    {
+        Console.WriteLine($"Email sent to {s}");
+    }
+}
+
+public class Letter : IMessage
+{
+    public void Send(string s)
+    {
+        Console.WriteLine($"Letter sent from {s}");
+    }
+}
+
+public class Problem
+{
+    private readonly IMessage _message;
+
+    public Problem(IMessage message)
+    {
+        _message = message;
+    }
+
+    public void SendMessage(string s)
+    {
+        _message.Send(s);
+    }
+}
+
+public class Solution
+{
+    public static void Main(string[] args)
+    {
+        IMessage email = new Email();
+        IMessage letter = new Letter();
+
+        Problem p1 = new Problem(email);
+        Problem p2 = new Problem(letter);
+
+        p1.SendMessage("Mahafuz");
+        p2.SendMessage("Sardar");
+    }
+}
+
+
+
+output:
+
+Email sent to Mahafuz
+Letter sent from Sardar
+
+=== Code Execution Successful ===
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**``````````````````````````````````````````````````````````````````````````````````````````````````````````````````**
+
+
+
+
+
+**//DigitAdd**
+
+
+
+using System;
+
+public class Convert
+{
+    public int Inp { get; set; }
+
+    public Convert(int input)
+    {
+        Inp = input;
+    }
+
+    public int ToAdd()
+    {
+        int result = 0;
+        string stringInput = Inp.ToString();
+
+        foreach (char c in stringInput)
+        {
+            result += int.Parse(c.ToString());
+        }
+
+        return result;
+    }
+
+    public static void Main(string[] args)
+    {
+        Convert c = new Convert(538485646);
+        Console.WriteLine(c.ToAdd());
+    }
+}
+
+
+output:
+
+49
+
+
+
+
+
+
+
+**`````````````````````````````````````````````````````````````````````````````````````````````````````**
+
+
+
+
+
+
+
+
+
+**//Duplicate Word Count from string**
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public class Solve
+{
+    public static void Duplicate(string s)
+    {
+        // Normalize and split the string into words
+        List<string> strArr = s
+            .ToLower()
+            .Split(new char[] { ' ', '.', ',', '!', '?' }, StringSplitOptions.RemoveEmptyEntries)
+            .ToList();
+
+        Dictionary<string, int> dic = new Dictionary<string, int>();
+
+        // Count occurrences
+        foreach (string item in strArr)
+        {
+            if (dic.ContainsKey(item))
+            {
+                dic[item] += 1;
+            }
+            else
+            {
+                dic[item] = 1;
+            }
+        }
+
+        // Print word counts
+        foreach (KeyValuePair<string, int> pair in dic)
+        {
+            Console.WriteLine($"Word: {pair.Key} || Count: {pair.Value}");
+        }
+    }
+
+    public static void Main(string[] args)
+    {
+        string text = "Hello world! Hello everyone. Welcome to the world of C#.";
+        Duplicate(text);
+    }
+}
+
+
+
+output:
+
+Word: hello || Count: 2
+Word: world || Count: 2
+Word: everyone || Count: 1
+Word: welcome || Count: 1
+Word: to || Count: 1
+Word: the || Count: 1
+Word: of || Count: 1
+Word: c# || Count: 1
+
+=== Code Execution Successful ===
+
+
+
+
+
+
+
+
+**````````````````````````````````````````````````````````````````````````````````````````````````````````````````````**
+
+
+
+//GenerateFibonacci number
+
+
+
+
+using System;
+using System.Collections.Generic;
+
+public class Problem
+{
+    public static void GenerateFibonacci(int num)
+    {
+        List<int> sequence = new List<int>();
+
+        if (num <= 0)
+        {
+            Console.WriteLine(0);
+            return;
+        }
+
+        sequence.Add(0);
+        if (num == 1)
+        {
+            Console.WriteLine("0");
+            return;
+        }
+
+        sequence.Add(1);
+
+        for (int i = 2; i < num; i++)
+        {
+            sequence.Add(sequence[i - 1] + sequence[i - 2]);
+        }
+
+        Console.WriteLine("Fibonacci Sequence:");
+        foreach (var item in sequence)
+        {
+            Console.Write(item + " ");
+        }
+    }
+
+    public static void Main(string[] args)
+    {
+        GenerateFibonacci(5);
+    }
+}
+
+
+
+output:
+
+
+Fibonacci Sequence:
+0 1 1 2 3 
+=== Code Execution Successful ===
+
+
+
+
+
+
+
+```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+//Sum of All Even Numbers in an Array
+
+
+using System;
+
+public class Problem
+{
+    // Method to calculate the sum of even numbers
+    public static void SumEvenNumbers(int[] numbers)
+    {
+        int sum = 0;
+
+        foreach (int num in numbers)
+        {
+            if (num % 2 == 0)
+            {
+                sum += num;
+            }
+        }
+
+        Console.WriteLine("Sum of even numbers: " + sum);
+    }
+
+    // Main method
+    public static void Main(string[] args)
+    {
+        int[] arr = { 1, 2, 3, 4, 5, 6, 8, 10 };
+        SumEvenNumbers(arr);
+    }
+}
+
+
+output:
+
+Sum of even numbers: 30
+
+=== Code Execution Successful ===
+
+
+
+
+
+
+**``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````**
+
+
+
+
+
+using System;
+using System.Text;
+
+public class Solve
+{
+    public string Inp { get; set; }
+
+    public Solve(string input)
+    {
+        Inp = input;
+    }
+
+    public void Editor()
+    {
+        StringBuilder consonants = new StringBuilder();
+        StringBuilder vowels = new StringBuilder();
+
+        foreach (char c in Inp)
+        {
+            if (IsVowel(c))
+            {
+                vowels.Append(c);
+            }
+            else
+            {
+                consonants.Append(c);
+            }
+        }
+
+        Console.WriteLine("Rearranged String (Consonants + Vowels):");
+        Console.WriteLine(consonants.Append(vowels).ToString());
+    }
+
+    public bool IsVowel(char c)
+    {
+        return "aeiouAEIOU".IndexOf(c) >= 0;
+    }
+
+    public static void Main(string[] args)
+    {
+        Solve s1 = new Solve("programming");
+        s1.Editor();
+    }
+}
+
+
+output:
+
+
+Rearranged String (Consonants + Vowels):
+prgrmmngoai
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+``````````````````````````````````````````````````````````````````````````````````````````````````````````**
+
+
+
+
+
+
+
+//Linque
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public class Solve
+{
+    List<string> names = new List<string>();
+
+    public Solve()
+    {
+        names.Add("Alice");
+        names.Add("Bob");
+        names.Add("Amsin");
+        names.Add("siueb");
+        names.Add("Becjob");
+        names.Add("kqubd");
+    }
+
+    public void FilterList()
+    {
+        var aNames = names
+            .Where(name => name.StartsWith("A"))
+            .OrderBy(name => name);
+
+        foreach (var name in aNames)
+        {
+            Console.WriteLine(name);
+        }
+    }
+
+    public static void Main(string[] args)
+    {
+        Solve s1 = new Solve();
+        s1.FilterList();
+    }
+}
+
+
+output:
+
+Alice
+Amsin
+
+=== Code Execution Successful ===
+
+
+
+
+
+
+
+
+
+
+
+
+```````````````````````````````````````````````````````````````````````````````````````````````````````````````````**
+
+
+
+
+
+//Stack
+
+
+using System;
+using System.Collections.Generic;
+
+public class MyStack<T>
+{
+    private readonly List<T> _stack = new List<T>();
+
+    public void Push(T item)
+    {
+        _stack.Add(item);
+    }
+
+    public void Pop()
+    {
+        if (_stack.Count == 0)
+        {
+            Console.WriteLine("Stack is empty. Cannot pop.");
+            return;
+        }
+
+        _stack.RemoveAt(_stack.Count - 1);
+    }
+
+    public void Peek()
+    {
+        if (_stack.Count == 0)
+        {
+            Console.WriteLine("Stack is empty.");
+            return;
+        }
+
+        Console.WriteLine("Top of stack: " + _stack[_stack.Count - 1]);
+    }
+}
+
+public class Solve
+{
+    public static void Main(string[] args)
+    {
+        MyStack<int> m = new MyStack<int>();
+
+        m.Push(10);
+        m.Push(20);
+        m.Push(30);
+        m.Push(40);
+
+        m.Peek(); // Output: Top of stack: 40
+        m.Pop();  // Removes 40
+        m.Peek(); // Output: Top of stack: 30
+    }
+}
+
+
+output:
+
+Top of stack: 40
+Top of stack: 30
+
+=== Code Execution Successful ===
+
+
+
+
+
+
+
+```````````````````````````````````````````````````````````````````````````````````````````````````**
+
+
+
+
+
+
+
+//TryCatch
+
+
+using System;
+
+public class Mathaa
+{
+    public int num1 { get; set; }
+    public int num2 { get; set; }
+
+    public void Dev()
+    {
+        try
+        {
+            int num = num1 / num2;
+            Console.WriteLine("Result: " + num);
+        }
+        catch (NullReferenceException)
+        {
+            Console.WriteLine("Can't do it: Null reference encountered.");
+        }
+        catch (DivideByZeroException)
+        {
+            Console.WriteLine("Can't divide by zero.");
+        }
+    }
+}
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Mathaa m1 = new Mathaa() { num1 = 2, num2 = 0 };
+        m1.Dev();
+    }
+}
+
+
+output:
+
+Can't divide by zero.
+
+=== Code Execution Successful ===
+
+
+
+
+
+//for null refernce exception of above pgm
+
+using System;
+
+public class Mathaa
+{
+    public int num1 { get; set; }
+    public int num2 { get; set; }
+
+    public void Dev()
+    {
+        try
+        {
+            Mathaa m2 = null; // m2 is null
+            int result = m2.num1 / m2.num2; // Accessing properties on null object
+            Console.WriteLine("Result: " + result);
+        }
+        catch (NullReferenceException)
+        {
+            Console.WriteLine("Caught NullReferenceException: Object is null.");
+        }
+        catch (DivideByZeroException)
+        {
+            Console.WriteLine("Caught DivideByZeroException.");
+        }
+    }
+}
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Mathaa m1 = new Mathaa();
+        m1.Dev();
+    }
+}
+
+output:
+
+
+Caught NullReferenceException: Object is null.
+
+
+
+
+
+
+**`````````````````````````````````````````````````````````````````````````````````````````````````````````**
+
+//Toggle Case of Each Character or upper case to lower case and vice versa
+
+using System;
+using System.Text;
+
+public class Problem
+{
+    public string StrConversion(string s)
+    {
+        StringBuilder res = new StringBuilder();
+
+        foreach (char c in s)
+        {
+            if (char.IsLower(c))
+            {
+                res.Append(char.ToUpper(c));
+            }
+            else if (char.IsUpper(c))
+            {
+                res.Append(char.ToLower(c));
+            }
+            else
+            {
+                res.Append(c); // Keep non-alphabet characters unchanged
+            }
+        }
+
+        return res.ToString();
+    }
+}
+
+public class Solve
+{
+    public static void Main(string[] args)
+    {
+        Problem p = new Problem();
+        Console.WriteLine(p.StrConversion("MaHaFUZ")); // Output: mAhAfuz
+    }
+}
+
+
+
+
+// Output: mAhAfuz
+
+
+
+
+
+
+
+
+**``````````````````````````````````````````````````````````````````````````````````````````````````**
+
+
+
+
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+
+public class Solve
+{
+    public static void Solution(Dictionary<string, int> inputDictionary1, Dictionary<string, int> inputDictionary2)
+    {
+        Dictionary<string, int> final = new Dictionary<string, int>();
+
+        // Merge first dictionary
+        foreach (var item1 in inputDictionary1)
+        {
+            final[item1.Key] = final.GetValueOrDefault(item1.Key, 0) + item1.Value;
+        }
+
+        // Merge second dictionary
+        foreach (var item2 in inputDictionary2)
+        {
+            final[item2.Key] = final.GetValueOrDefault(item2.Key, 0) + item2.Value;
+        }
+
+        // Print merged dictionary
+        foreach (var item in final)
+        {
+            Console.WriteLine($"{item.Key} > {item.Value}");
+        }
+    }
+
+    public static void Main(string[] args)
+    {
+        Dictionary<string, int> i1 = new Dictionary<string, int>()
+        {
+            { "apple", 2 },
+            { "banana", 3 }
+        };
+
+        Dictionary<string, int> i2 = new Dictionary<string, int>()
+        {
+            { "banana", 2 },
+            { "orange", 4 }
+        };
+
+        Solution(i1, i2);
+    }
+}
+
+
+output:
+
+apple > 2
+banana > 5
+orange > 4
+
+=== Code Execution Successful ===
+
+
+
+
+
+
+
+**````````````````````````````````````````````````````````````````````````````````````````````````````**
+
+
+
+
+
+
+
+
+
+//Palindrome
+
+
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public class Solve
+{
+    public void PalindromeChecker(string s)
+    {
+        List<char> original = s.ToList();
+        List<char> reversed = new List<char>(original);
+        reversed.Reverse();
+
+        if (original.SequenceEqual(reversed))
+        {
+            Console.WriteLine($"{s} → Palindrome");
+        }
+        else
+        {
+            Console.WriteLine($"{s} → Not Palindrome");
+        }
+    }
+}
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Solve s1 = new Solve();
+        s1.PalindromeChecker("racecar");
+        s1.PalindromeChecker("mahafuz");
+        s1.PalindromeChecker("madam");
+    }
+}
+
+
+
+output:
+
+racecar ? Palindrome
+mahafuz ? Not Palindrome
+madam ? Palindrome
+
+=== Code Execution Successful ===
+
+
+**`````````````````````````````````````````````````````````````````````````````````````````````````**
+
+
+
+
+
+
+
+//Longest Common Prefix
+
+
+
+
+
+using System;
+
+public class Problem
+{
+    public int Prefix(string[] slst)
+    {
+        if (slst == null || slst.Length == 0)
+            return 0;
+
+        string checkString = slst[0];
+
+        for (int i = 0; i < checkString.Length; i++)
+        {
+            char checkChar = checkString[i];
+
+            for (int j = 1; j < slst.Length; j++)
+            {
+                string currentString = slst[j];
+
+                if (i >= currentString.Length || currentString[i] != checkChar)
+                {
+                    return i;
+                }
+            }
+        }
+
+        return checkString.Length;
+    }
+}
+
+public class Solve
+{
+    public static void Main(string[] args)
+    {
+        string[] slist = new string[] { "flower", "flow", "flight" };
+        Problem p = new Problem();
+        int prefixLength = p.Prefix(slist);
+
+        Console.WriteLine("Longest Common Prefix: " + slist[0].Substring(0, prefixLength));
+    }
+}
+
+
+
+
+
+
+output:
+
+Longest Common Prefix: fl
+
+=== Code Execution Successful ===
+
+
+
+
+
+
+
+
+**````````````````````````````````````````````````````````````````````````````````````````````````**
+
+
+
+
+
+
+
+using System.Collections;
+using System.Globalization;
+using System;
+
+public class Problem
+{
+    public char? Solution(string str)
+    {
+        for (int i = 0; i < str.Length; i++)
+        {
+            int flag = 0;
+
+            for (int j = 0; j < str.Length; j++)
+            {
+                if (i != j && str[i] == str[j])
+                {
+                    flag += 1;
+                }
+            }
+
+            if (flag == 0)
+            {
+                return str[i];
+            }
+        }
+
+        return null;
+    }
+}
+
+public class Solve
+{
+    public static void Main(string[] args)
+    {
+        Problem p = new Problem();
+        string str = "mamfuazfmmaaff";
+        Console.WriteLine(p.Solution(str));
+    }
+}
+
+output:
+
+u
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**````````````````````````````````````````````````````````````````````````````````````````````````````**
+
+
+
+
+//Reverse a String Without Built-in Functions
+
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+
+public class Problem
+{
+    public void ReverseString(string str)
+    {
+        List<char> sr = new List<char>();
+        List<char> rsr = new List<char>();
+
+        // Add characters to the list
+        foreach (var item in str)
+        {
+            sr.Add(item);
+        }
+
+        // Reverse manually
+        for (int i = sr.Count - 1; i >= 0; --i)
+        {
+            rsr.Add(sr[i]);
+        }
+
+        // Print each character
+        foreach (var item in rsr)
+        {
+            Console.WriteLine(item);
+        }
+
+        // Print full reversed string
+        Console.WriteLine(string.Join("", rsr));
+    }
+}
+
+public class Solve
+{
+    public static void Main(string[] args)
+    {
+        string str = "mahafuz";
+        Problem pb = new Problem();
+        pb.ReverseString(str);
+    }
+}
+
+
+
+output:
+
+z
+u
+f
+a
+h
+a
+m
+zufaham
+
+
+
+
+
+
+**``````````````````````````````````````````````````````````````````````````````````````````````````**
+
+
+
+//Find Second Largest Element in an Array
+
+
+
+using System;
+
+public class Solve
+{
+    public static void SecondLargest(int[] arr)
+    {
+        if (arr.Length < 2)
+        {
+            Console.WriteLine("Array must contain at least two elements.");
+            return;
+        }
+
+        int largest = int.MinValue;
+        int secondLargest = int.MinValue;
+
+        foreach (int item in arr)
+        {
+            if (item > largest)
+            {
+                secondLargest = largest;
+                largest = item;
+            }
+            else if (item > secondLargest && item < largest)
+            {
+                secondLargest = item;
+            }
+        }
+
+        if (secondLargest == int.MinValue)
+        {
+            Console.WriteLine("No second largest element found (all elements may be equal).");
+        }
+        else
+        {
+            Console.WriteLine("Second largest element: " + secondLargest);
+        }
+    }
+
+    public static void Main(string[] args)
+    {
+        int[] arr = { 2, 2, 3, 4 };
+        SecondLargest(arr);
+    }
+}
+
+
+output:
+
+Second largest element: 3
+
+=== Code Execution Successful ===
